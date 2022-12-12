@@ -1,6 +1,6 @@
 # ReCapProject - Araç Kiralama Sistemi
-![cizimbanner2](https://raw.githubusercontent.com/furkanpasaoglu/githubImages/main/Yaz%C4%B1l%C4%B1m%20Geli%C5%9Ftirici%20Yeti%C5%9Ftirme%20kamp%C4%B1.png) 
-
+![117002814-b7275680-acec-11eb-9d5b-2cc18f86d025](https://user-images.githubusercontent.com/53178769/207033011-9012d407-537b-42ae-b230-01d6284f64bc.png)
+Frontend Tarafı : [Rent A Car Frontend](https://github.com/hashus12/ReCapProject-Angular "Rent A Car Frontend")
 ## :pushpin:Getting Started
 ![layers](https://github.com/furkanpasaoglu/githubImages/blob/main/About.png)
 <br>
