@@ -68,4 +68,4 @@ System.IdentityModel.Tokens.Jwt Version="6.8.0"
 <br>
 
 ## :pencil2:Authors
-* **Hasan Hüseyin Özgen** - [furkanpasaoglu](https://github.com/hashus12)
+* **Hasan Hüseyin Özgen** - [hasanozgen](https://github.com/hashus12)
