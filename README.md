@@ -3,15 +3,38 @@
 
 #### Frontend Tarafı:[Rent A Car Frontend](https://github.com/hashus12/ReCapProject-Angular "Rent A Car Frontend")
 
+## :pushpin:Proje Hakkında
+N-Katmanlı Solid mimari yapısı ile hazırlanan, EntityFramework kullanılarak CRUD işlemlerinin yapıldığı, kayıt olma giriş yapabilme Jwt teknikleri ile token alarak güvenliği sağlanan, Caching, Validation, Transaction,Performance işlemlerini Autofac paketi ile oluşturulan Aspectleri kullanarak gerçekleştiren,
+araç Kiralama iş yerlerine yönelik örnek bir projedir.Proje içerisinde data kaynakları kolayca değiştirilebilir, yeni nesneler eklenebilir, bütün iş istekleri değiştirilebilir.Yapılacak olanlar eski kodları bozmadan sürekli ekleme ile yapılabilir.Proje sürdürülebilirlik prensibini yerine getirmektedir.
+
+### Backend Teknolojileri ve Teknikleri
+Sql Server, Asp.Net Core for Restful api,EntityFramework Core,Autofac,FluentValidation
+<br>Layered Architecture Design Pattern,IOC, AOP, Aspects, JWT
+
 ## :pushpin:Getting Started
 ![About](https://user-images.githubusercontent.com/16624085/117002846-c27a8200-acec-11eb-98bb-0316777e8a05.png)
 <br>
 ## :books:Layers  
 ![entitieslayer](https://user-images.githubusercontent.com/16624085/117002898-d3c38e80-acec-11eb-8b57-0f77c41030ae.png)
 ### Entities Layer
-Veritabanı nesneleri için oluşturulmuş **Entities Katmanı**'nda **Abstract** ve **Concrete** olmak üzere iki adet klasör bulunmaktadır.Abstract klasörü soyut nesneleri, Concrete klasörü somut nesneleri tutmak için oluşturulmuştur.  
-![BusinessLayer](https://user-images.githubusercontent.com/16624085/117002936-e211aa80-acec-11eb-86a8-23bd1a9219e8.png)
-<br>
+**Entities Katmanı**'nda **Dtos** ve **Concrete** olmak üzere iki adet klasör bulunmaktadır.Concrete klasörü veri tabanından gelen somut nesnelerin özelliklerini tutmak için oluşturulmuştur.Dtos klasörü ise veri tabanında birbiri ile ilişkili olan nesnelerin ilişkili özelliklerini birlikte kullanabilmek için oluşturulmuştur.
+<br><br>:file_folder:`Dtos`  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarDetailDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/CarDetailDto.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarImageDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/CarImageDto.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [RentalDetailDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/RentalDetailDto.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [RentalPaymentDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/RentalPaymentDto.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [UserForLoginDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/UserForLoginDto.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [UserForRegisterDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/UserForRegisterDto.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [UserForUpdateDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/UserForUpdateDto.cs) 
+<br> <br> :file_folder:`Concrete`  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarImage.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/CarImage.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Customer.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Customer.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Rental.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Rental.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Findeks.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Findeks.cs) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Brand.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Brand.cs)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Car.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Car.cs)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Color.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Color.cs)  
+
 ###  Business Layer
 Sunum katmanından gelen bilgileri gerekli koşullara göre işlemek veya denetlemek için oluşturulan **Business Katmanı**'nda **Abstract**,**Concrete**,**Utilities** ve **ValidationRules** olmak üzere dört adet klasör bulunmaktadır.Abstract klasörü soyut nesneleri, Concrete klasörü somut nesneleri tutmak için oluşturulmuştur.Utilities ve ValidationRules klasörlerinde validation işlemlerinin gerçekleştiği classlar mevcuttur.  
 <br>
