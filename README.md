@@ -35,19 +35,43 @@ Sql Server, Asp.Net Core for Restful api,EntityFramework Core,Autofac,FluentVali
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Car.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Car.cs)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Color.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/Concrete/Color.cs)  
 
-###  Business Layer
-Sunum katmanından gelen bilgileri gerekli koşullara göre işlemek veya denetlemek için oluşturulan **Business Katmanı**'nda **Abstract**,**Concrete**,**Utilities** ve **ValidationRules** olmak üzere dört adet klasör bulunmaktadır.Abstract klasörü soyut nesneleri, Concrete klasörü somut nesneleri tutmak için oluşturulmuştur.Utilities ve ValidationRules klasörlerinde validation işlemlerinin gerçekleştiği classlar mevcuttur.  
-<br>
-![dataaccesslayer](https://user-images.githubusercontent.com/16624085/117002975-f2c22080-acec-11eb-9228-83df11a74ca6.png)
-###  Data Access Layer
-Veritabanı CRUD işlemleri gerçekleştirmek için oluşturulan **Data Access Katmanı**'nda **Abstract** ve **Concrete** olmak üzere iki adet klasör bulunmaktadır.Abstract klasörü soyut nesneleri, Concrete klasörü somut nesneleri tutmak için oluşturulmuştur.  
-<br>
-
-###  Core Layer
-Bir framework katmanı olan **Core Katmanı**'nda **DataAccess**, **Entities**, **Utilities** olmak üzere 3 adet klasör bulunmaktadır.DataAccess klasörü DataAccess Katmanı ile ilgili nesneleri, Entities klasörü Entities katmanı ile ilgili nesneleri tutmak için oluşturulmuştur. Core katmanının .Net Core ile hiçbir bağlantısı yoktur.Oluşturulan core katmanında ortak kodlar tutulur. Core katmanı ile, kurumsal bir yapıda, alt yapı ekibi ilgilenir.  
+![corekatmani](https://i.ibb.co/0npPtyq/Ads-z-tasar-m-1.jpg)
+###  Core Katmanı
+**Core Katmanı** evrensel bir katmandır. Geliştirilecek her projede kullanılabilir, isimlendirme kuralları ve oluşturulma düzeni sebebi ile oldukça kullanışlıdır. **Core Katmanı**'nda **DataAccess**, **Entities**, **Utilities**, **Aspects**, **CrossCuttingConcerns**, **DependencyResolvers** ve **Extensions** klasörleri bulunmaktadır.
+**Aspects** kasörü Caching, Validation, Transaction,Performance işlemlerinin Autofac attribute altyapısını hazırlar.**CrossCuttingConcerns** klasöründe Validation ve Cache yönetimi proje içerisinde, dikey katmanda dinamik çalışabilmesi için (generics)genelleştirildi.**DependencyResolvers** klasöründe servis konfigrasyonları yapıldı.**DataAccess** klasöründe bütün CRUD operasyonları ve DataBaseler generic olarak yapılandırıldı.**Extensions** içerisinde Jwt için yönetimi kolaylaştıran genişlemeler yapıldı.**Utilities** içerisinde iş metodu kurallarının yönetimi kolaylaştırıldı, belge ekleme işlemleri kodlandı,Aspectlerin araya girebilmesi için alt yapı hazırlandı ve ezilmeyi bekliyor, Results yapısı kurularak hata yönetimi yapılandırıldı, Jwt ve hashing teknikleriyle güvenlik yapılandırıldı.
 > **⚠ DİKKAT: .**  
 > Core Katmanı, diğer katmanları referans almaz.
+<br> <br> :file_folder:`Core`  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Autofac](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/Aspects/Autofac) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CrossCuttingConcerns](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/CrossCuttingConcerns) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [DataAccess](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/DataAccess) 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [DependencyResolvers](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/DependencyResolvers)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Entities](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/Entities)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Extensions](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/Extensions)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Utilities](https://github.com/hashus12/ReCapProject-Backend/tree/master/Core/Utilities)  
 
+![dataaccesskatmani](https://i.ibb.co/BgJVzpy/Data-Access.jpg)
+###  Data Access Katmanı
+**Data Access Katmanı**'nda **Abstract** interfaceleri barındıran ve **Concrete** classları barındıran klasörler bulunmaktadır.Crud operasyonlarını core katmanından miras alarak gerçekleştirmektedir.Gelebilecek iş kodları için altyapı burada hazırlanır.Objelerin data transferleri için kullanacağı data baseler ve varlıkların bağlantıları **Data Access Katmanı**'nda yapılandırıldı.
+<br> <br> :file_folder:`DataAccess` 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [Abstract](https://github.com/hashus12/ReCapProject-Backend/tree/master/DataAccess/Abstract)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [EntityFramework](https://github.com/hashus12/ReCapProject-Backend/tree/master/DataAccess/Concrete/EntityFramework)  
+
+![business](https://i.ibb.co/nmb6m8y/Data-Access.png)
+###  Business Katmanı
+**Business Katmanı**'nda altyapısı hazır olan bütün serviserin yönetimleri yazıldı.Sürekli değişebilen iş kodlarımızı altyapıyı değiştirmeden ekleyebildiğimiz katmandır.Sürekliliğin korunduğu ReCap projemde birçok değişikliğin sadece burada yapılıyor olması yönetimi, sürekli gelişimi çok kolaylaştırmaktadır.
+<br> <br> :file_folder:`Concrete`
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [AuthManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/AuthManager.cs)
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [BrandManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/BrandManager.cs)
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarImageManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/CarImageManager.cs)
+<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/CarManager.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [ColorManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/ColorManager.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CustomerManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/CustomerManager.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [PaymentManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/PaymentManager.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [RentalManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/RentalManager.cs)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [UserManager.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Business/Concrete/UserManager.cs)
+
+* * *
 
 ![databaseandtables](https://user-images.githubusercontent.com/16624085/117002547-58fa7380-acec-11eb-9d13-9b8ac5f4532b.png)
 ###  Veritabanı Oluşturma 
