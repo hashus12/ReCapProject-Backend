@@ -15,8 +15,8 @@ Sql Server, Asp.Net Core for Restful api,EntityFramework Core,Autofac,FluentVali
 ![About](https://user-images.githubusercontent.com/16624085/117002846-c27a8200-acec-11eb-98bb-0316777e8a05.png)
 <br>
 ## :books:Layers  
-![entitieslayer](https://user-images.githubusercontent.com/16624085/117002898-d3c38e80-acec-11eb-8b57-0f77c41030ae.png)
-### Entities Layer
+![entities](https://i.ibb.co/LJn8Y9X/Ads-z-tasar-m.jpg)
+### Entities Katmanı
 **Entities Katmanı**'nda **Dtos** ve **Concrete** olmak üzere iki adet klasör bulunmaktadır.Concrete klasörü veri tabanından gelen somut nesnelerin özelliklerini tutmak için oluşturulmuştur.Dtos klasörü ise veri tabanında birbiri ile ilişkili olan nesnelerin ilişkili özelliklerini birlikte kullanabilmek için oluşturulmuştur.
 <br><br>:file_folder:`Dtos`  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:page_facing_up: [CarDetailDto.cs](https://github.com/hashus12/ReCapProject-Backend/blob/master/Entities/DTOs/CarDetailDto.cs)
